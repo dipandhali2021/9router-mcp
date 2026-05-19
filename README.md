@@ -2,7 +2,7 @@
 
 A high-performance, modular, and production-ready implementation of the Model Context Protocol (MCP) server for 9router. Built natively with Node.js v22 over standard I/O (stdio) with zero dependencies.
 
-Fully compatible with **Claude Code**, **Codex**, and **Claude Desktop**.
+Fully compatible with **Claude Code**, **Codex**, **Roo Code**, and **Claude Desktop**.
 
 ---
 
@@ -10,7 +10,29 @@ Fully compatible with **Claude Code**, **Codex**, and **Claude Desktop**.
 
 No installation required! Anyone can run your MCP server instantly via `npx`.
 
-### 1. Claude Desktop Configuration
+### 1. VS Code / Roo Code / Cline Configuration
+Add the following to your global MCP settings (e.g., `~/.vscode/global-mcp-settings.json`):
+
+```json
+{
+  "mcpServers": {
+    "9router": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "9router-mcp@latest"
+      ],
+      "env": {
+        "ROUTER_API_KEY": "your_9router_api_key_here",
+        "ROUTER_BASE_URL": "your_9router_base_url_here" 
+      }
+    }
+  }
+}
+```
+*(Note: `ROUTER_BASE_URL` is optional. It defaults to `your_9router_base_url_here`)*
+
+### 2. Claude Desktop Configuration
 Add the following to your `claude_desktop_config.json`:
 
 ```json
@@ -23,21 +45,22 @@ Add the following to your `claude_desktop_config.json`:
         "9router-mcp"
       ],
       "env": {
-        "ROUTER_API_KEY": "your_actual_9router_api_key_here"
+        "ROUTER_API_KEY": "your_actual_9router_api_key_here",
+        "ROUTER_BASE_URL": "your_9router_base_url_here"
       }
     }
   }
 }
 ```
 
-### 2. Registering in Claude Code CLI
+### 3. Registering in Claude Code CLI
 ```bash
-claude mcp add --scope user 9router-search -e ROUTER_API_KEY=your_key -- npx -y 9router-mcp
+claude mcp add --scope user 9router-search -e ROUTER_API_KEY=your_key -e ROUTER_BASE_URL=your_9router_base_url_here -- npx -y 9router-mcp
 ```
 
-### 3. Registering in Codex CLI
+### 4. Registering in Codex CLI
 ```bash
-codex mcp add 9router-search --env ROUTER_API_KEY=your_key -- npx -y 9router-mcp
+codex mcp add 9router-search --env ROUTER_API_KEY=your_key --env ROUTER_BASE_URL=your_9router_base_url_here -- npx -y 9router-mcp
 ```
 
 ---
@@ -48,7 +71,7 @@ If you prefer to clone the repository and run it locally:
 
 ### 1. Clone & Setup
 ```bash
-git clone <your-github-repo-url> 9router-mcp
+git clone https://github.com/dipandhali2021/9router-mcp.git
 cd 9router-mcp
 ```
 
@@ -56,6 +79,7 @@ cd 9router-mcp
 Create a `.env` file in the root of the project:
 ```bash
 ROUTER_API_KEY=your_actual_9router_api_key_here
+ROUTER_BASE_URL=your_9router_base_url_here
 ```
 
 ### 3. Run Locally
