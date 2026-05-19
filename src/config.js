@@ -40,7 +40,7 @@ function loadEnv() {
 loadEnv();
 
 const API_KEY = process.env.ROUTER_API_KEY;
-const BASE_URL = "your_9router_base_url_here";
+const BASE_URL = process.env.ROUTER_BASE_URL || "your_9router_base_url_here";
 
 const ENDPOINTS = {
   search: `${BASE_URL}/search`,

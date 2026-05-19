@@ -4,7 +4,7 @@
   "description": "Production-ready, modular MCP server for 9router tools.",
   "main": "index.js",
   "bin": {
-    "9router-mcp": "./index.js"
+    "9router-mcp": "index.js"
   },
   "type": "commonjs",
   "scripts": {
