@@ -40,7 +40,7 @@ function loadEnv() {
 loadEnv();
 
 const API_KEY = process.env.ROUTER_API_KEY;
-const BASE_URL = process.env.ROUTER_BASE_URL || "your_9router_base_url_here";
+const BASE_URL = process.env.ROUTER_BASE_URL;
 
 const ENDPOINTS = {
   search: `${BASE_URL}/search`,
@@ -62,15 +62,18 @@ const DEFAULTS = {
 };
 
 function getHeaders(extraHeaders = {}) {
-  if (!API_KEY) {
+  if (!API_KEY || !BASE_URL) {
     throw new Error(
-      "Missing 9router API key!\n" +
-      "Please set it using one of the following methods:\n" +
+      "Missing 9router configuration (API Key or Base URL)!\n" +
+      "Please set them using one of the following methods:\n" +
       "  1. Register with environment variables in your CLI:\n" +
-      "     - Claude Code: `claude mcp add --scope user 9router-search -e ROUTER_API_KEY=your_key -- node /home/ubuntu/.config/9router-mcp-server.js`\n" +
-      "     - Codex: `codex mcp add 9router-search --env ROUTER_API_KEY=your_key -- node /home/ubuntu/.config/9router-mcp-server.js`\n" +
+      "     - Claude Code: `claude mcp add --scope user 9router-search -e ROUTER_API_KEY=your_key -e ROUTER_BASE_URL=your_base_url -- npx -y 9router-mcp`\n" +
+     ROUTER_BASE_URL=your_base_url
+      "     - Codex: `codex mcp add 9router-search --env ROUTER_API_KEY=your_key --env ROUTER_BASE_URL=your_base_url -- npx -y 9router-mcp`\n" +
+     ROUTER_BASE_URL=your_base_url
       "  2. Create a `.env` file inside the 9router-mcp directory containing:\n" +
       "     ROUTER_API_KEY=your_key\n"
+     ROUTER_BASE_URL=your_base_url
     );
   }
   return {

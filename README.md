@@ -30,7 +30,7 @@ Add the following to your global MCP settings (e.g., `~/.vscode/global-mcp-setti
   }
 }
 ```
-*(Note: `ROUTER_BASE_URL` is optional. It defaults to `your_9router_base_url_here`)*
+*(Note: `ROUTER_BASE_URL` is required.)*
 
 ### 2. Claude Desktop Configuration
 Add the following to your `claude_desktop_config.json`:
