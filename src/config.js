@@ -67,17 +67,15 @@ function getHeaders(extraHeaders = {}) {
       "Missing 9router configuration (API Key or Base URL)!\n" +
       "Please set them using one of the following methods:\n" +
       "  1. Register with environment variables in your CLI:\n" +
-      "     - Claude Code: `claude mcp add --scope user 9router-search -e ROUTER_API_KEY=your_key -e ROUTER_BASE_URL=your_base_url -- npx -y 9router-mcp`\n" +
-     ROUTER_BASE_URL=your_base_url
-      "     - Codex: `codex mcp add 9router-search --env ROUTER_API_KEY=your_key --env ROUTER_BASE_URL=your_base_url -- npx -y 9router-mcp`\n" +
-     ROUTER_BASE_URL=your_base_url
-      "  2. Create a `.env` file inside the 9router-mcp directory containing:\n" +
-      "     ROUTER_API_KEY=your_key\n"
-     ROUTER_BASE_URL=your_base_url
+      "     - Claude Code: \`claude mcp add --scope user 9router-search -e ROUTER_API_KEY=your_key -e ROUTER_BASE_URL=your_base_url -- npx -y 9router-mcp\`\n" +
+      "     - Codex: \`codex mcp add 9router-search --env ROUTER_API_KEY=your_key --env ROUTER_BASE_URL=your_base_url -- npx -y 9router-mcp\`\n" +
+      "  2. Create a \`.env\` file inside the 9router-mcp directory containing:\n" +
+      "     ROUTER_API_KEY=your_key\n" +
+      "     ROUTER_BASE_URL=your_base_url"
     );
   }
   return {
-    "Authorization": `Bearer ${API_KEY}`,
+    "Authorization": \`Bearer ${API_KEY}\`,
     ...extraHeaders
   };
 }
