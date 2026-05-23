@@ -30,7 +30,7 @@ function loadEnv() {
         });
         break; // Successfully loaded from the first found .env file
       } catch (err) {
-        // Silently ignore or log to stderr
+        // Silently ignore
       }
     }
   }
@@ -75,7 +75,7 @@ function getHeaders(extraHeaders = {}) {
     );
   }
   return {
-    "Authorization": \`Bearer ${API_KEY}\`,
+    "Authorization": `Bearer ${API_KEY}`,
     ...extraHeaders
   };
 }
